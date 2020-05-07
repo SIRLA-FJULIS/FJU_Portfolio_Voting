@@ -56,7 +56,7 @@ ROOT_URLCONF = 'Portfolio_Voting.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -67,6 +67,10 @@ TEMPLATES = [
             ],
         },
     },
+]
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
 ]
 
 WSGI_APPLICATION = 'Portfolio_Voting.wsgi.application'

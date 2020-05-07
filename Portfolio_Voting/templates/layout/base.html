@@ -16,12 +16,10 @@
     {% block title %}<title>108伏秀作品集</title>{% endblock %}
 </head>
 <body>
-    <div class="container-fluid">
-        {% include "./_navbar.html" %}
-        <main class="container">
-            {% block content %}{% endblock %}
-        </main>
-    </div>
+    {% include "./_navbar.html" %}
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
     {% block custom_script %}{% endblock %}
 </body>
 </html>

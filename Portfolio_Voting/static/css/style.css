@@ -7,3 +7,33 @@ body, input, button, select, textarea {
 main {
     margin-top: 56px;
 }
+
+/* navbar */
+#sidebar {
+    min-height: 700px;
+    background-color: #E4E4E4;
+}
+
+#sidebar a {
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: #000;
+    text-align: center;
+    transition: ease-in-out 150ms;
+}
+
+#sidebar a:hover {
+    background-color: #D4CACB;
+}
+
+.header-sm {
+    font-size: 1.5rem;
+}
+
+.fa-heart {
+    color: #FF7575;
+}
+
+.plus-one-btn {
+    height: 2rem;
+}

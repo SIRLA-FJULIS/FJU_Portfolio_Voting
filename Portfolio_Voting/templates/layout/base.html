@@ -16,8 +16,13 @@
     {% block title %}<title>108伏秀作品集</title>{% endblock %}
 </head>
 <body>
+    <header class="navbar navbar-expand-md navbar-dark bg-dark fixed-top px-md-5">
+        <a class="navbar-brand font-weight-bold" href="{% url 'index' %}">
+            108扶秀作品集
+        </a>
+    </header>
     {% include "./_navbar.html" %}
-    <main class="container">
+    <main class="container offset-2 px-5 pt-4">
         {% block content %}{% endblock %}
     </main>
     {% block custom_script %}{% endblock %}

@@ -6,7 +6,7 @@ from django.urls import reverse
 def login(request):
     if request.user.is_authenticated:
         print('0000')
-        return redirect('/portfolios/')
+        return redirect('/portfolios/') ### 待解決
     username = request.POST.get('username', '')
     password = request.POST.get('password', '')
     user = auth.authenticate(username=username, password=password)

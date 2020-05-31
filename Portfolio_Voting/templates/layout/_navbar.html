@@ -11,4 +11,18 @@
             <a href="{% url 'portfolios:index' %}" class="nav-link">理工學院</a>
         </li>
     </ul>
+    
+    <!--修改-->
+    <ul>
+        {% if request.user.is_superuser %}
+            <li><a class="navbar-brand" href="/admin">Admin</a></li>
+            <li><a class="navbar-brand" href="{% url 'users:logout' %}">Logout</a></li>
+        {% elif request.user.is_authenticated %}
+            <li><a class="navbar-brand" href="{% url 'users:logout' %}">Logout</a></li>
+        {% else %}
+            <li><a class="navbar-brand" href="{% url 'users:login' %}">Login</a></li>
+            <li><a class="navbar-brand" href="/users_register">Sign up</a></li>
+        {% endif %}
+    </ul>
+    <!--到這邊-->
 </nav>

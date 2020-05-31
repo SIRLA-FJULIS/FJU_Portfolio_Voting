@@ -132,3 +132,8 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # will build a file 'media' in same level path as manage.py
+
+
+# 新增
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'

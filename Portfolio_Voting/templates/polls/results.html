@@ -1,9 +1,26 @@
-<h1>{{ question.question_text }}</h1>
+{% extends "layout/base.html" %}
 
-<ul>
-{% for choice in question.choice_set.all %}
-    <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
-{% endfor %}
-</ul>
+{% block content %}
+<h1>投票主題：{{ question.question_text }}</h1>
+<br>
+{% if error_message %}
+	<p><strong>{{ error_message }}</strong></p>
+{% endif %}
 
-<a href="{% url 'polls:detail' question.id %}">Vote again?</a>
+<form action="{% url 'polls:vote' question.id %}" method="post">
+	{% csrf_token %}
+
+		{% for choice in question.choice_set.all %}
+    		<button class="btn btn-primary btn-sm plus-one-btn" disabled name="choice" id="choice_id" value="{{ choice.id }}"><i class="fas fa-thumbs-up"></i>  投一票！</button>
+    		<label for="choice{{ forloop.counter }}" > Choice{{ forloop.counter }}：{{ choice.choice_text }} - {{ choice.votes }}票 </label><br><br>
+		{% endfor %}
+		<!--<input type="submit" value="Vote">-->
+	{% if messages %}
+        {% for message in messages %}
+    		{% if message.tags %}
+    		<script>alert("{{ message }}")</script>
+    		{% endif %}
+        {% endfor %}
+    {% endif %}
+</form>
+{% endblock %}

@@ -15,5 +15,8 @@ class QuestionAdmin(admin.ModelAdmin):
     inlines = [ChoiceInline]
     list_display = ('question_text', 'pub_date', 'was_published_recently')
 
+class ChoiceAdmin(admin.ModelAdmin):
+    list_display = ('choice_text', 'votes', 'question')
+
 admin.site.register(Question, QuestionAdmin)
-admin.site.register(Choice)
+admin.site.register(Choice, ChoiceAdmin)

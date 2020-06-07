@@ -7,6 +7,7 @@
 		<p>Welcome, {{ user.username }}</p>
 	{% elif request.user.is_authenticated %}
 		<p>Welcome, {{ user.username }}</p>
+		<a href="{% url 'users:logout' %}">按此登出</a><br>
 		<p>敬請期待</p>
 	{% else %}
 		<p>登入後，即可投票/查看作品集</p>

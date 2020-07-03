@@ -2,6 +2,8 @@ from django.db import models
 from django.utils import timezone
 import datetime
 
+from portfolios.models import Work
+
 # Create your models here.
 class Question(models.Model):
 	question_text = models.CharField(max_length=200)
@@ -21,9 +23,21 @@ class Question(models.Model):
 	search_fields = ['question_text']
 
 class Choice(models.Model):
-	question = models.ForeignKey(Question, on_delete=models.CASCADE)
+	question = models.ForeignKey("polls.Question", on_delete=models.CASCADE)
 	choice_text = models.CharField(max_length=200)
+	# choice_text = models.ForeignKey("portfolios.Work", on_delete=models.CASCADE) #https://iter01.com/418588.html
 	votes = models.IntegerField(default=0)
 	
 	def __str__(self):
 		return self.choice_text
+
+'''
+class Question:
+	question_text	投票主題(問題)
+	pub_date		開始投票的日期
+
+class Choice:
+	question 		投票主題(問題)
+	choice_text		投票的選項
+	votes			票數
+'''

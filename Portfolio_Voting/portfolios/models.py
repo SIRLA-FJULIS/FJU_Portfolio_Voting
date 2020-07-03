@@ -7,9 +7,9 @@ class Work(models.Model):
 	author = models.CharField(max_length=200)
 	description = models.TextField()
 	thumbnail = models.ImageField(upload_to='thumbnail', blank=True)
-	file = models.FileField(upload_to='files', blank=True)
+	pdf_file = models.FileField(upload_to='pdf_file')
+	video_url = models.URLField(max_length=200)
 	created_date = models.DateTimeField(default=timezone.now)
-	#like = 
 
 	class Meta:
 		ordering = ('-created_date',)
@@ -22,9 +22,9 @@ title			作品名稱
 author			作者
 description		作品描述
 thumbnail		作品縮圖
-file 			檔案附件
-created_date	創建日期
-like			投票
+pdf_file 		pdf檔案附件
+video_url 		youtube檔案連結
+created_date	發布時間
 '''
 
 # 投票 (參考網站)

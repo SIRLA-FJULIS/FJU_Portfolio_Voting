@@ -23,7 +23,13 @@
 		<h2>{{ work.author }}</h2>
 		<img src="{{ work.thumbnail.url }}" width="150px">
 		<p>{{ work.description }}</p>
-		<a href="{{ work.file.url }}">{{ work.file }}</a>
+
+		{% if work.pdf_file %}
+			<a href="{{ work.pdf_file.url }}">{{ work.pdf_file }}</a>
+		{% elif work.video_url %}
+			<a href="{{ work.video_url.url }}">{{ work.video_url }}</a>
+		{% endif %}
+		
 		<p>發布時間: {{ work.created_date | date:"Y-m-d, h:m:s" }}</p>
 	</li>
 	{% endfor %}

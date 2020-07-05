@@ -7,3 +7,7 @@ def index(request):
 	print("app: PORTFOLIOS ->", request.session['USER_INPUT_DEPARTMENT'])
 	'''
 	return render(request, 'portfolios/index.html')
+
+def article(request, id):
+	
+	return render(request, 'portfolios/article.html')

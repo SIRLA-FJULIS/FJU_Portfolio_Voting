@@ -18,8 +18,8 @@
         </p>
         <h4>作品內容</h4>
         {% if work.pdf_file %}
-            <a href="{{ work.pdf_file }}" target="_blank">在新視窗開啟</a>
-            <iframe src="{{ work.pdf_file }}" width="100%" height="700px"></iframe>
+            <a href="{{ MEDIA_URL }}{{ work.pdf_file }}" target="_blank">在新視窗開啟</a>
+            <iframe src="{{ MEDIA_URL }}{{ work.pdf_file }}" width="100%" height="700px"></iframe>
         {% elif work.video_url %}
             <div id="video"></div>
             <script>

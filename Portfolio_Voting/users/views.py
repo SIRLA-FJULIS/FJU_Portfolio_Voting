@@ -18,20 +18,7 @@ def login(request):
 		return redirect(reverse('portfolios:index'))
 	else:
 		print('no pass', username)
-		return render(request, 'registration/login.html', locals())
-
-def login000(request):
-	USER_STUD_ID = request.POST.user.studID
-	print('---', USER_STUD_ID)
-	# request.session['USER_INPUT_STUD_ID'] = USER_STUD_ID
-	# print(request.session['USER_INPUT_STUD_ID'])
-
-	### Test for session ###
-	print(username)
-	request.session['studID'] = username
-	studID = request.session['studID']
-	print(studID, "request.session['studID']")
-    
+		return render(request, 'registration/login.html', locals())    
 
 def logout(request):
     auth.logout(request)
@@ -46,7 +33,8 @@ def register(request):
 		'form': form
 	}
 	return render(request, 'registration/register.html', {'form':form})
-	
+
+'''
 def get_user_info(request):
 	if 'user_input_fullname' in request.POST and 'user_input_department' in request.POST:
 		USER_FULLNAME = request.POST.get('user_input_fullname')
@@ -68,11 +56,12 @@ def get_user_info(request):
 			is_admin=USER_ISADMIN,
 		)
 		User.save()
-		'''
+		
 		### TESTING: 傳遞 session ###
 		if 'USER_INPUT_DEPARTMENT' in request.session:
 			print("app: USERS ->", request.session['USER_INPUT_DEPARTMENT'])
-		'''
+		
 		
 		return redirect(reverse('portfolios:index')) ###
 	return render(request, 'registration/get_user_info.html', locals())
+'''

@@ -1,22 +1,20 @@
 {% extends "layout/base.html" %}
+
 {% block content %}
     <h1>Login</h1>
     <form action="{% url 'users:login' %}" method="post" class="login">
         {% csrf_token %}
-        <!--<table>
-            <tr>
-                <td>{{ form.username.label_tag }}</td>
-                <td>{{ form.username }}</td>
-            </tr>
-            <tr>
-                <td>{{ form.password.label_tag }}</td>
-                <td>{{ form.password }}</td>
-            </tr>
-        </table>-->
         <table>
+			<tr>
+				<td><p>學號：<input type="text" name="username"></td>
+		    	</p>
+                <td><p>密碼：<input type="password" name="password"></p></td>
+		  	</tr>
+		</table>
+        <!--<table>
             {{ form.as_table }}
-        </table>
+        </table>-->
         <input type="submit" value="login">
-        <a href="{% url 'users:password_reset' %}">忘記密碼？</a>
+        <!--<a href="{% url 'users:password_reset' %}">忘記密碼？</a>-->
     </form>
 {% endblock %}

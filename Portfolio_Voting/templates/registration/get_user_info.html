@@ -1,0 +1,20 @@
+{% extends "layout/base.html" %}
+
+{% load static %}
+{% block content %}
+	<div>
+		<form action="/users/get_user_info/" method="post" id="myForm">
+			{% csrf_token %}
+			<p>fullName</p>
+				<input type="text" id="USER_INPUT_FULLNAME" name="user_input_fullname" value="" />
+			<p>department</p>
+				<input type="text" id="USER_INPUT_DEPARTMENT" name="user_input_department" value="" />
+			<p>is_active</p>
+				<input type="text" id="USER_INPUT_ISACTIVE" name="user_input_isactive" value="True" />
+			<p>is_admin</p>
+				<input type="text" id="USER_INPUT_ISADMIN" name="user_input_isadmin" value="False" />
+
+			<button type="button" onclick="submit()" class="btn btn-warning">OK</button>
+		</form>
+	</div>
+{% endblock %}

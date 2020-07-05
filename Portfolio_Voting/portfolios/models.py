@@ -7,8 +7,8 @@ class Work(models.Model):
 	author = models.CharField(max_length=200)
 	description = models.TextField()
 	thumbnail = models.ImageField(upload_to='thumbnail', blank=True)
-	pdf_file = models.FileField(upload_to='pdf_file')
-	video_url = models.URLField(max_length=200)
+	pdf_file = models.FileField(upload_to='pdf_file', blank=True)
+	video_url = models.URLField(max_length=200, blank=True)
 	created_date = models.DateTimeField(default=timezone.now)
 
 	class Meta:

@@ -1,3 +1,4 @@
+from .models import Work
 from django.shortcuts import render
 
 # Create your views here.
@@ -9,5 +10,6 @@ def index(request):
 	return render(request, 'portfolios/index.html')
 
 def article(request, id):
-	
-	return render(request, 'portfolios/article.html')
+	work = Work.objects.get(id=id)
+
+	return render(request, 'portfolios/article.html', { 'work': work })

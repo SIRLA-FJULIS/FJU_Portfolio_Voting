@@ -39,8 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'portfolios',
     'users',
-    # 'polls',
-    'polls.apps.PollsConfig',
 ]
 
 AUTH_USER_MODEL = 'users.User'

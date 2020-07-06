@@ -30,7 +30,6 @@ from django.conf.urls import include
 urlpatterns += [
     path('portfolios/', include('portfolios.urls', namespace='portfolios')),
     path('users/', include('users.urls', namespace='users')),
-    path('polls/', include('polls.urls', namespace='polls')),
 ]
 
 if settings.DEBUG:

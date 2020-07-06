@@ -19,9 +19,9 @@
             <li>
                 <a class="nav-link" href="{% url 'users:logout' %}">Logout</a>
             </li>
-        {% elif request.user.is_authenticated %}
+        {% elif request.user.is_activate %}
             <li>
-                <a class="nav-link" href="{% url 'polls:index' %}">投票列表</a>
+                <a class="nav-link" href="{% url 'portfolios:index' %}">投票列表</a>
             </li>
             <li>
                 <a class="nav-link" href="{% url 'users:logout' %}">Logout</a>

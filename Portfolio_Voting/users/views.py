@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib import auth
 
 from django.urls import reverse
@@ -12,12 +11,15 @@ def login(request):
 	username = request.POST.get('username')
 	password = request.POST.get('password')
 	user = auth.authenticate(username=username, password=password)
+
 	if user is not None and user.is_active:
 		auth.login(request, user)
 		print('pass', username)
+		request.session['USER_INPUT_STUD_ID'] = username
 		return redirect(reverse('portfolios:index'))
 	else:
 		print('no pass', username)
+		request.session['USER_INPUT_STUD_ID'] = username
 		return render(request, 'registration/login.html', locals())    
 
 def logout(request):
@@ -25,10 +27,12 @@ def logout(request):
     return redirect(reverse('users:login'))
 
 def register(request):
+	if 'USER_INPUT_STUD_ID' in request.POST:
+		print("--- register ---", request.session['USER_INPUT_STUD_ID'])
 	form = RegisterForm(request.POST or None)
 	if form.is_valid():
 		form.save()
-		return redirect(reverse('users:login'))
+		return redirect(reverse('users:login')) #reverse('users:login')
 	context = {
 		'form': form
 	}

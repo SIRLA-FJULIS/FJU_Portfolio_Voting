@@ -1,7 +1,6 @@
 from django.db import models
 
 from django.contrib.auth.models import (BaseUserManager, AbstractBaseUser)
-from polls.models import Choice
 
 # Create your models here.
 class UserManager(BaseUserManager):
@@ -82,13 +81,4 @@ class User(AbstractBaseUser):
 studID			帳號 (學號)
 fullName		姓名
 department		系所
-choice_text		所投票的作品名稱
-
 '''
-
-class User_Vote(models.Model):
-    choice_text = models.ForeignKey("polls.Choice", on_delete=models.CASCADE)
-    studID = models.CharField(max_length=200)
-
-    def __str__(self):
-        return self.choice_text

@@ -5,5 +5,9 @@ app_name = 'portfolios'
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('<int:id>', views.article, name='article')
+    # path('<int:id>', views.article, name='article'),
+
+	path('<int:choiceText_id>/', views.detail, name='detail'),
+	path('<int:choiceText_id>/results/', views.results, name='results'),
+	path('<int:choiceText_id>/vote/', views.vote, name='vote'),
 ]

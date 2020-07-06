@@ -7,13 +7,10 @@
 		<p>Welcome, {{ user.studID }}</p>
 	{% elif request.user.is_active %}
 		<p>Welcome, {{ user.studID }}</p>
-		<a href="/users/get_user_info">1. 麻煩請先 填寫 USER INFO</a>
 		<a href="{% url 'users:logout' %}">按此登出</a><br>
 		<p>敬請期待</p>
 	{% else %}
 		<p>登入後，即可投票/查看作品集</p>
-		<a href="{% url 'users:login' %}">按此登入</a><br>
-		<a href="{% url 'users:register' %}">按此註冊</a><br>
 	{% endif %}
 
 
@@ -23,10 +20,6 @@
 	<li>
 		<h2>作品名稱：{{ work.title }}</h2>
 		<h2>作者：{{ work.author }}</h2>
-
-		{% if work.thumbnail %}
-			<p>作品縮圖：</p><img src="{{ work.thumbnail.url }}" width="150px">
-		{% endif %}
 
 		<p>作品描述：{{ work.description }}</p>
 

@@ -1,0 +1,13 @@
+{% extends "layout/base.html" %}
+
+{% block content %}
+{% if error_message %}
+	<p><strong>{{ error_message }}</strong></p>
+{% endif %}
+
+<li>
+    <a class="nav-link" href="{% url 'users:logout' %}">Logout</a>
+</li>
+<h3>{{ work.title }}</h3>
+<h3>{{ work_vote_counting }}</h3>
+{% endblock %}

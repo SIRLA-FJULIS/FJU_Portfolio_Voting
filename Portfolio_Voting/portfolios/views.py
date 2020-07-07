@@ -5,8 +5,9 @@ from django.urls import reverse
 from portfolios.models import Work, UserVote
 
 # Create your views here.
-def index(request):
-	work_list = Work.objects.order_by('work_college')
+def index(request, college):
+	print(college)
+	work_list = Work.objects.filter(work_college=college).all()
 	context = {
 		'work_list': work_list,
 	}

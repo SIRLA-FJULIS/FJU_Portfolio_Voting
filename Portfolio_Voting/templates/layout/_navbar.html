@@ -2,13 +2,40 @@
 <nav id="sidebar" class="col-2 position-fixed h-100 p-0">
     <ul class="nav flex-column h-100">
         <li>
-            <a href="{% url 'portfolios:index' %}" class="nav-link">文學院</a>
+            <a href="{% url 'portfolios:index' college='文學院' %}" class="nav-link">文學院</a>
         </li>
         <li>
-            <a href="{% url 'portfolios:index' %}" class="nav-link">教育學院</a>
+            <a href="{% url 'portfolios:index' college='藝術學院' %}" class="nav-link">藝術學院</a>
         </li>
         <li>
-            <a href="{% url 'portfolios:index' %}" class="nav-link">理工學院</a>
+            <a href="{% url 'portfolios:index' college='傳播學院' %}" class="nav-link">傳播學院</a>
+        </li>
+        <li>
+            <a href="{% url 'portfolios:index' college='教育學院' %}" class="nav-link">教育學院</a>
+        </li>
+        <li>
+            <a href="{% url 'portfolios:index' college='醫學院' %}" class="nav-link">醫學院</a>
+        </li>
+        <li>
+            <a href="{% url 'portfolios:index' college='理工學院' %}" class="nav-link">理工學院</a>
+        </li>
+        <li>
+            <a href="{% url 'portfolios:index' college='外國語文學院' %}" class="nav-link">外國語文學院</a>
+        </li>
+        <li>
+            <a href="{% url 'portfolios:index' college='民生學院' %}" class="nav-link">民生學院</a>
+        </li>
+        <li>
+            <a href="{% url 'portfolios:index' college='法律學院' %}" class="nav-link">法律學院</a>
+        </li>
+        <li>
+            <a href="{% url 'portfolios:index' college='社會科學院' %}" class="nav-link">社會科學院</a>
+        </li>
+        <li>
+            <a href="{% url 'portfolios:index' college='管理學院' %}" class="nav-link">管理學院</a>
+        </li>
+        <li>
+            <a href="{% url 'portfolios:index' college='織品服裝學院' %}" class="nav-link">織品服裝學院</a>
         </li>
 
         <!--修改-->

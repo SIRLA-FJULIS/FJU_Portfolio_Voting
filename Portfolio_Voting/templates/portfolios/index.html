@@ -26,7 +26,7 @@
             {{ work.author }}
         </p>
         <p class="text-muted">
-            {{ work.description|truncatechars:250 }}
+            {{ work.description|truncatechars:150 }}
         </p>
         <a href="{% url 'portfolios:article' work.id %}" class="btn btn-secondary align-self-end mt-auto">觀看作品</a>
     </div>

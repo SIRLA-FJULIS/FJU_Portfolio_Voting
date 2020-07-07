@@ -13,7 +13,7 @@ def index(request, college):
 	}
 	return render(request, 'portfolios/index.html', context)
 
-def article(request, college, portfolio_id):
+def article(request, portfolio_id):
 	work = get_object_or_404(Work, pk=portfolio_id)
 	print(portfolio_id)
 	return render(request, 'portfolios/article.html', {'work': work})

@@ -18,8 +18,8 @@
     <div class="col-12 d-flex flex-column">
         <div class="d-flex align-items-center mb-2">
             <h3 class="card-title m-0 mr-4">{{ work.title }}</h3>
-            <span class="mr-3"><i class="far fa-heart"></i> {{ work.uservote_set.all | length }}</span>
-            <a href="{% url 'portfolios:vote' work.id %}?next={% url 'portfolios:index' college %}" class="btn btn-primary btn-sm plus-one-btn"><i class="fas fa-thumbs-up"></i> 投一票!</a>
+            <span class="mr-3">{% if work.id == voted_id %}<i class="fas fa-heart"></i>{% else %}<i class="far fa-heart"></i>{% endif %} {{ work.uservote_set.all | length }}</span>
+            <a href="{% url 'portfolios:vote' work.id %}?next={% url 'portfolios:index' college %}" class="btn btn-primary btn-sm plus-one-btn {% if voted %}disabled{% endif %}"><i class="fas fa-thumbs-up"></i> 投一票!</a>
         </div>
         <p class="card-text">
             {{ work.work_department }} <br/> 
@@ -33,4 +33,35 @@
 </div>
 {% endfor %}
 
+<!-- Modal -->
+<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title">是否要投票？</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <p>確定要投給這個作品？</p>
+                <p class="font-weight-bold">注意：投票後不可更改</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                <a id="confirmBtn" href="#" class="btn btn-primary">確定</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block custom_script %}
+<script>
+    $('.plus-one-btn').click(function(event) {
+        event.preventDefault();
+        $('#confirmModal').modal('show');
+        $('#confirmBtn').attr('href', this.href);
+    });
+</script>
 {% endblock %}

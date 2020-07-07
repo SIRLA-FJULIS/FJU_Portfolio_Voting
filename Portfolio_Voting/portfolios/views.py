@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.contrib import messages
 
 from portfolios.models import Work, UserVote
 
@@ -15,7 +16,6 @@ def index(request, college):
 
 def article(request, portfolio_id):
 	work = get_object_or_404(Work, pk=portfolio_id)
-	print(portfolio_id)
 	return render(request, 'portfolios/article.html', {'work': work})
 
 def results(request, choiceText_id):
@@ -30,17 +30,17 @@ def results(request, choiceText_id):
 	return render(request, 'portfolios/article_results.html', context)
 
 
-def vote(request, choiceText_id):
-	work = get_object_or_404(Work, pk=choiceText_id)
+def vote(request, portfolio_id):
+	work = get_object_or_404(Work, pk=portfolio_id)
 
-	StudVoted = len(UserVote.objects.all().filter(studID=request.user.username))
-	if (StudVoted == 1) == False:
+	StudVoted = len(UserVote.objects.filter(studID=request.user.username).all())
+	if StudVoted == 0:
 		Stud_Voting = UserVote.objects.create(
 			choice_workTitle=Work.objects.filter(pk=work.id).get(),
 			studID=request.user.username
 		)
 		Stud_Voting.save()
-		return HttpResponseRedirect(reverse('portfolios:results', args=(work.id,) ))
+		return HttpResponseRedirect(request.GET.get('next'))
 	else:
-		print('你已投過票囉！')
-		return HttpResponseRedirect(reverse('portfolios:results', args=(work.id,) ))
+		messages.add_message(request, messages.WARNING, '您已經投過票了喔!')
+		return HttpResponseRedirect(request.GET.get('next'))

@@ -14,7 +14,7 @@ def login(request):
 	if user is not None and user.is_active:
 		auth.login(request, user)
 		print('pass', username)
-		return redirect(reverse('portfolios:index'))
+		return redirect(reverse('index'))
 	else:
 		print('no pass', username)
 		return render(request, 'registration/login.html', locals())    

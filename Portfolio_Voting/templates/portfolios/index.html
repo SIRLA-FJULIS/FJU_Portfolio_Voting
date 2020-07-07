@@ -1,16 +1,25 @@
 {% extends "layout/base.html" %}
 
 {% block content %}
+{% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-warning {% if message.tags %} alert-{{ message.tags }} {% endif %} alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    {% endfor %}
+{% endif %}
 <h2 class="font-weight-bold header-sm">{{ college }}</h2>
 <p class="text-muted">為您喜愛的作品投下神聖的一票!</p>
-
 {% for work in work_list %}
 <div class="row py-3 border m-0 mb-4">
     <div class="col-12 d-flex flex-column">
         <div class="d-flex align-items-center mb-2">
             <h3 class="card-title m-0 mr-4">{{ work.title }}</h3>
             <span class="mr-3"><i class="far fa-heart"></i> {{ work.uservote_set.all | length }}</span>
-            <button class="btn btn-primary btn-sm plus-one-btn"><i class="fas fa-thumbs-up"></i> 投一票!</button>
+            <a href="{% url 'portfolios:vote' work.id %}?next={% url 'portfolios:index' college %}" class="btn btn-primary btn-sm plus-one-btn"><i class="fas fa-thumbs-up"></i> 投一票!</a>
         </div>
         <p class="card-text">
             {{ work.work_department }} <br/> 

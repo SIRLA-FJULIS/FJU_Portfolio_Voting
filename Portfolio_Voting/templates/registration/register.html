@@ -1,10 +1,7 @@
 {% extends 'layout/base.html' %}
 
-{% block title %}
-	<h1>Register Page</h1>
-{% endblock title %}
-
 {% block content %}
+	<h1>註冊</h1>
 	<form method="POST">
 		{% csrf_token %}
 			{{ form.as_p }}

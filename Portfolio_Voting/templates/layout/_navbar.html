@@ -37,30 +37,25 @@
         <li>
             <a href="{% url 'portfolios:index' college='織品服裝學院' %}" class="nav-link">織品服裝學院</a>
         </li>
-
-        <!--修改-->
-        {% if request.user.is_admin %}
+        
+        {% if user.is_admin %}
             <li>
-                <a class="nav-link" href="/admin">後台管理</a>
+                <a class="nav-link" href="/admin"><i class="fas fa-toolbox"></i> 後台管理</a>
             </li>
             <li>
-                <a class="nav-link" href="{% url 'users:logout' %}">Logout</a>
+                <a class="nav-link" href="{% url 'users:logout' %}"><i class="fas fa-sign-out-alt"></i> 登出</a>
             </li>
-        {% elif request.user.is_activate %}
+        {% elif user.is_authenticated %}
             <li>
-                <a class="nav-link" href="{% url 'portfolios:index' %}">投票列表</a>
-            </li>
-            <li>
-                <a class="nav-link" href="{% url 'users:logout' %}">Logout</a>
+                <a class="nav-link" href="{% url 'users:logout' %}"><i class="fas fa-sign-out-alt"></i> 登出</a>
             </li>
         {% else %}
             <li>
-                <a class="nav-link" href="{% url 'users:login' %}">Login</a>
+                <a class="nav-link" href="{% url 'users:login' %}"><i class="fas fa-sign-in-alt"></i> 登入</a>
             </li>
             <li>
-                <a class="nav-link" href="{% url 'users:register' %}">Sign up</a><br>
+                <a class="nav-link" href="{% url 'users:register' %}"><i class="fas fa-user-plus"></i> 註冊</a><br>
             </li>
         {% endif %}
-        <!--到這邊-->
     </ul>
 </nav>

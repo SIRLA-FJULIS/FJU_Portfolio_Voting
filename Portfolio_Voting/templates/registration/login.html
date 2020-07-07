@@ -1,7 +1,7 @@
 {% extends "layout/base.html" %}
 
 {% block content %}
-    <h1>Login</h1>
+    <h1>登入</h1>
     <form action="{% url 'users:login' %}" method="post" class="login">
         {% csrf_token %}
         <table>

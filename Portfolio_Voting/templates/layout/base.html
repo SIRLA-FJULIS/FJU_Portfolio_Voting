@@ -17,9 +17,12 @@
 </head>
 <body>
     <header class="navbar navbar-expand-md navbar-dark bg-dark fixed-top px-md-5">
-        <a class="navbar-brand font-weight-bold" href="{% url 'index' %}">
+        <a class="navbar-brand font-weight-bold mr-auto" href="{% url 'index' %}">
             108扶秀作品集
         </a>
+        {% if user.is_authenticated %}
+        <span class="text-light"><i class="far fa-user mr-1"></i>{{ user.username }}</span>
+        {% endif %}
     </header>
     {% include "./_navbar.html" %}
     <main class="container offset-2 px-5 pt-4">

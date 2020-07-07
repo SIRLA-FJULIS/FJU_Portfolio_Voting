@@ -38,8 +38,7 @@ def vote(request, choiceText_id):
 	if (StudVoted == 1) == False:
 		Stud_Voting = UserVote.objects.create(
 			choice_workTitle=Work.objects.filter(pk=work.id).get(),
-			studID=request.user.username, 
-			votes=1,
+			studID=request.user.username
 		)
 		Stud_Voting.save()
 		return HttpResponseRedirect(reverse('portfolios:results', args=(work.id,) ))

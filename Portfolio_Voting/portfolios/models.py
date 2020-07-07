@@ -36,7 +36,6 @@ class Work(models.Model):
 class UserVote(models.Model):
 	choice_workTitle = models.ForeignKey("portfolios.Work", on_delete=models.CASCADE)
 	studID = models.CharField(max_length=200, unique=True, blank=False)
-	votes = models.IntegerField(default=0)
 	
 	def __str__(self):
 		return self.studID
@@ -57,6 +56,3 @@ Choice
 	studID				投票者
 	votes				票數
 '''
-
-# 投票 (參考網站)
-# https://keydocsdjango.readthedocs.io/en/latest/Django%E5%88%9B%E5%BB%BA%E6%8A%95%E7%A5%A8app%E5%BF%AB%E9%80%9F%E9%A2%84%E8%A7%88.html

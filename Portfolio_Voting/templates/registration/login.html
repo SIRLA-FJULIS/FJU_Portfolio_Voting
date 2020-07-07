@@ -1,6 +1,16 @@
 {% extends "layout/base.html" %}
 
 {% block content %}
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-warning {% if message.tags %} alert-{{ message.tags }} {% endif %} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+    {% endif %}
     <h1>登入</h1>
     <form action="{% url 'users:login' %}" method="post" class="login">
         {% csrf_token %}

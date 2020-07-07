@@ -4,21 +4,15 @@ from django.contrib.auth.models import (BaseUserManager, AbstractBaseUser)
 
 # Create your models here.
 class UserManager(BaseUserManager):
-	def create_user(self, studID, fullName, department, is_active, is_admin, password):
-		"""
-		Creates and saves a User with the given studID and password.
-		"""
-		if not studID:
-			raise ValueError("ENTER AN EMAIL BUDDY")
+	def create_user(self, username, fullName, department, is_active, is_admin, password):
+
 		if not fullName:
-			raise ValueError("I KNOW YOU HAVE A NAME")
+			raise ValueError("Please enter your fullName.")
 		if not department:
-			raise ValueError("department???")
-		if not password:
-			raise ValueError("PASSWORD?!?!?!? HELLO??")
+			raise ValueError("Please enter your department.")
 
 		user = self.model(
-			studID=studID,
+			username=username,
 			fullName=fullName,
 			department=department,
 			is_active=is_active,
@@ -29,12 +23,10 @@ class UserManager(BaseUserManager):
 		user.save(using=self._db)
 		return user
 
-	def create_superuser(self, studID, fullName, department, is_active, is_admin, password):
-		"""
-		Creates and saves a superuser with the given email and password.
-		"""
+	def create_superuser(self, username, fullName, department, is_active, is_admin, password):
+
 		user = self.create_user(
-			studID=studID,
+			username=username,
 			fullName=fullName,
 			department=department,
 			password=password,
@@ -46,9 +38,7 @@ class UserManager(BaseUserManager):
 
 # hook in the New Manager to our Model
 class User(AbstractBaseUser):
-	
-	# user = models.OneToOneField(User, on_delete=models.CASCADE)
-	studID = models.CharField(verbose_name='學號', max_length=200, unique=True)
+	username = models.CharField(max_length=40, unique=True)
 	fullName = models.CharField(verbose_name='中文全名', max_length=200)
 	department = models.CharField(verbose_name='系所', max_length=200)
 	is_active = models.BooleanField(verbose_name='啟用', default=True)
@@ -56,29 +46,29 @@ class User(AbstractBaseUser):
 
 	objects = UserManager()
 
-	USERNAME_FIELD = 'studID'
+	USERNAME_FIELD = 'username'
 	REQUIRED_FIELDS = ['fullName', 'department', 'is_active', 'is_admin']
 	
 
 	def __str__(self):
-		# return self.fullName
-		return "@{}: {}".format(self.fullName, self.studID)
-
+		return "@{}: {}".format(self.fullName, self.username)
 
 	def has_perm(self, perm, obj=None):
-		return True #is_superuser self.is_admin
+		return True
 
 	def has_module_perms(self, app_label):
-		return True #is_superuser self.is_admin
+		return True
 
 	@property
 	def is_staff(self):
-		"Is the user a member of staff?"
+		# "Is the user a member of staff?"
 		# Simplest possible answer: All admins are staff
 		return self.is_admin
 
 '''
-studID			帳號 (學號)
-fullName		姓名
+username		帳號 (學號)
+fullName		中文全名
 department		系所
+is_active		啟用
+is_admin		管理員
 '''

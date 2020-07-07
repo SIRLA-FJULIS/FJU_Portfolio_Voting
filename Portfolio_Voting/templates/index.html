@@ -4,9 +4,9 @@
 {% block content %}
 	
 	{% if request.user.is_admin %}
-		<p>Welcome, {{ user.studID }}</p>
+		<p>Welcome, {{ user.username }}</p>
 	{% elif request.user.is_active %}
-		<p>Welcome, {{ user.studID }}</p>
+		<p>Welcome, {{ user.username }}</p>
 		<a href="{% url 'users:logout' %}">按此登出</a><br>
 		<p>敬請期待</p>
 	{% else %}

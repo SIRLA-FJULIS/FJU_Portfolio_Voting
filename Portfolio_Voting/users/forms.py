@@ -6,4 +6,4 @@ from users.models import User
 class RegisterForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ('studID', 'fullName', 'department', 'is_active') #, 'is_admin'
+        fields = ('username', 'fullName', 'department', 'is_active') #, 'is_admin'

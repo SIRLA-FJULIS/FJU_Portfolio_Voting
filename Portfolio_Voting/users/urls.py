@@ -1,8 +1,6 @@
 from django.urls import path, include
 from . import views
 
-from django.views.generic.base import TemplateView
-
 app_name = 'users'
 
 urlpatterns = [
@@ -11,13 +9,3 @@ urlpatterns = [
     path('login/', views.login, name='login'),
     path('logout/', views.logout, name='logout'),
 ]
-
-
-'''
-# User 註冊頁面
-http://127.0.0.1:8000/users/register/
-
-# User 登入頁面
-http://127.0.0.1:8000/users/accounts/login/ 
-
-'''

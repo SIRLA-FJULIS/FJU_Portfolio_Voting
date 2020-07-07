@@ -1,13 +1,13 @@
 from django.contrib import admin
 
-from portfolios.models import Work, User_Vote
+from portfolios.models import Work, UserVote
 
 # Register your models here.
 class WorkAdmin(admin.ModelAdmin):
-    list_display = ('title', 'author', 'work_management', 'work_department', 'pdf_file', 'created_date')
+    list_display = ('title', 'author', 'work_college', 'work_department', 'pdf_file', 'created_date')
 
-class User_VoteAdmin(admin.ModelAdmin):
-	list_display = ('studID', 'choiceText_workTitle', 'votes')
+class UserVoteAdmin(admin.ModelAdmin):
+	list_display = ('studID', 'choice_workTitle', 'votes')
 
 admin.site.register(Work, WorkAdmin)
-admin.site.register(User_Vote, User_VoteAdmin)
+admin.site.register(UserVote, UserVoteAdmin)

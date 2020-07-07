@@ -1,9 +1,6 @@
 {% extends "layout/base.html" %}
 
 {% block content %}
-{% if error_message %}
-	<p><strong>{{ error_message }}</strong></p>
-{% endif %}
 
 <li>
     <a class="nav-link" href="{% url 'users:logout' %}">Logout</a>

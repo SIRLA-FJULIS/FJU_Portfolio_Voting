@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import redirect
+from django.urls import reverse
 
 from portfolios.models import Work
 
 def index(request):
-	work_list = Work.objects.all()
-	return render(request, 'index.html', {'work_list': work_list})
+	return redirect(reverse('portfolios:index', kwargs={'college': '文學院'}))

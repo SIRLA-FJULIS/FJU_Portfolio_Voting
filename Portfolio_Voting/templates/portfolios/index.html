@@ -1,46 +1,25 @@
 {% extends "layout/base.html" %}
 
 {% block content %}
-    
-<p>Welcome, {{ user.username }}</p>
-
-<h1>作品列表 (依學院排序)</h1>
-<hr>
-{% if work_list %}
-    <ul>
-        {% for work in work_list %}
-            <li>
-                <a href="{% url 'portfolios:detail' work.id %}">{{ work.title }}</a>
-                <p>{{ work.work_college }}</p>
-                <p>{{ work.work_department }}</p>
-            </li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>No polls are available.</p>
-{% endif %}
-
-<hr>
-
-<h2 class="font-weight-bold header-sm">文學院</h2>
+<h2 class="font-weight-bold header-sm">{{ college }}</h2>
 <p class="text-muted">為您喜愛的作品投下神聖的一票!</p>
 
-{% for i in '01234'|make_list %}
+{% for work in work_list %}
 <div class="row py-3 border m-0 mb-4">
     <div class="col-12 d-flex flex-column">
         <div class="d-flex align-items-center mb-2">
-            <h3 class="card-title m-0 mr-4">我的夢想</h3>
-            <span class="mr-3"><i class="far fa-heart"></i> 20</span>
+            <h3 class="card-title m-0 mr-4">{{ work.title }}</h3>
+            <span class="mr-3"><i class="far fa-heart"></i> {{ work.uservote_set.all | length }}</span>
             <button class="btn btn-primary btn-sm plus-one-btn"><i class="fas fa-thumbs-up"></i> 投一票!</button>
         </div>
         <p class="card-text">
-            圖書資訊學系 <br/> 
-            王小明
+            {{ work.work_department }} <br/> 
+            {{ work.author }}
         </p>
         <p class="text-muted">
-            威望成功那是投入出了房子自我承擔諮詢自由瞬間到達，第二根據好像，理念各地見面鑒定播放表情得分點擊，非常推坑大魔王考試全面提問聽說存在新技術麻煩，討論區研究生態度集中人數，二十找到允許只需最快壓縮，提。
+            {{ work.description }}
         </p>
-        <a href="#" class="btn btn-secondary align-self-end mt-auto">觀看作品</a>
+        <a href="/portfolios/{{ work.id }}" class="btn btn-secondary align-self-end mt-auto">觀看作品</a>
     </div>
 </div>
 {% endfor %}

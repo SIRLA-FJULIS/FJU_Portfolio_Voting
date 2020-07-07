@@ -6,10 +6,10 @@ from portfolios.models import Work, UserVote
 
 # Create your views here.
 def index(request, college):
-	print(college)
 	work_list = Work.objects.filter(work_college=college).all()
 	context = {
 		'work_list': work_list,
+		'college': college
 	}
 	return render(request, 'portfolios/index.html', context)
 

@@ -29,7 +29,6 @@
             <a class="text-light" href="{% url 'users:logout' %}"><i class="fas fa-sign-out-alt"></i> 登出</a>
         {% else %}
             <a class="text-light mr-3" href="{% url 'users:login' %}"><i class="fas fa-sign-in-alt"></i> 登入</a>
-            <a class="text-light" href="{% url 'users:register' %}"><i class="fas fa-user-plus"></i> 註冊</a><br>
         {% endif %}
     </header>
     {% include "./_navbar.html" %}

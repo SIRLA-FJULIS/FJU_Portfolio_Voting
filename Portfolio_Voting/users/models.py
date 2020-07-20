@@ -39,19 +39,19 @@ class UserManager(BaseUserManager):
 # hook in the New Manager to our Model
 class User(AbstractBaseUser):
 	username = models.CharField(max_length=40, unique=True)
-	fullName = models.CharField(verbose_name='中文全名', max_length=200)
-	department = models.CharField(verbose_name='系所', max_length=200)
+	fullName = models.CharField(verbose_name='中文全名', max_length=200, blank=True)
+	department = models.CharField(verbose_name='系所', max_length=200, blank=True)
 	is_active = models.BooleanField(verbose_name='啟用', default=True)
 	is_admin = models.BooleanField(verbose_name='管理員', default=False)
 
 	objects = UserManager()
 
 	USERNAME_FIELD = 'username'
-	REQUIRED_FIELDS = ['fullName', 'department', 'is_active', 'is_admin']
+	REQUIRED_FIELDS = ['is_active', 'is_admin']
 	
 
 	def __str__(self):
-		return "@{}: {}".format(self.fullName, self.username)
+		return "@{}".format(self.username)
 
 	def has_perm(self, perm, obj=None):
 		return True

@@ -25,7 +25,7 @@ SECRET_KEY = '#+o7becd9xaot4j=ajhpcnch62^dh5vg8qh^21t6zhms^=avoa'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['140.136.202.234', 'hecct.fju.edu.tw', '*']
 
 
 # Application definition
@@ -74,10 +74,6 @@ TEMPLATES = [
     },
 ]
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
-
 WSGI_APPLICATION = 'Portfolio_Voting.wsgi.application'
 
 
@@ -86,8 +82,12 @@ WSGI_APPLICATION = 'Portfolio_Voting.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'hecctdb',
+	'USER': 'admin',
+	'PASSWORD': 'zj6vu.4yji4qup3ru6',
+	'HOST': 'localhost',
+	'PORT': '',
     }
 }
 
@@ -132,6 +132,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # will build a file 'media' in same level path as manage.py

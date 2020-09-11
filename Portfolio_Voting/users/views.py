@@ -56,7 +56,6 @@ def verify(request):
         user = auth.authenticate(username=id, password=state)
         auth.login(request, user)
         return redirect(reverse('index'))
-        #return render(request, 'test.html', {'id':id, 'type':type, 'state':state, 'username':username, 'password':password})
 
     else:
         return HttpResponse('Login Error!')

@@ -36,6 +36,7 @@
     {% include "./_navbar.html" %}
     <main class="container offset-2 px-5 pt-4">
         {% block content %}{% endblock %}
+        <p class="text-center align-text-bottom">Visitor Statistics of Site: {{context_nb_vistors}} times</p>
     </main>
     {% block custom_script %}{% endblock %}
 </body>

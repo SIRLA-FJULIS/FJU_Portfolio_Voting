@@ -2,6 +2,8 @@ from django.db import models
 
 from django.contrib.auth.models import (BaseUserManager, AbstractBaseUser)
 
+from datetime import datetime
+
 # Create your models here.
 class UserManager(BaseUserManager):
 	def create_user(self, username, fullName, department, is_active, is_admin, password):
@@ -48,7 +50,6 @@ class User(AbstractBaseUser):
 
 	USERNAME_FIELD = 'username'
 	REQUIRED_FIELDS = ['is_active', 'is_admin']
-	
 
 	def __str__(self):
 		return "@{}".format(self.username)
@@ -72,3 +73,8 @@ department		系所
 is_active		啟用
 is_admin		管理員
 '''
+
+class Visitor_Infos(models.Model):
+    ip_address = models.GenericIPAddressField()
+    page_visited = models.TextField()
+    event_date = models.DateTimeField(default=datetime.now)

@@ -20,8 +20,8 @@
         <input type="submit" value="登入" class="btn btn-primary">
     </form>-->
 
-<iframe src="http://www.net.fju.edu.tw/main/06/login.php" style="width:500px;height:200px;border-width:0px">
-    {% csrf_token %}
-</iframe>
-
+<form action="" method="POST">
+{% csrf_token %}
+<iframe src="http://www.net.fju.edu.tw/main/06/login.php" style="width:500px;height:200px;border-width:0px"></iframe>
+</form>
 {% endblock %}
